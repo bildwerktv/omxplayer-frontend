@@ -17,8 +17,8 @@ urls = (
 )
 
 PLAYABLE_TYPES = ['.264','.avi','.bin','.divx','.f4v','.h264','.m4e','.m4v','.m4a','.mkv','.mov','.mp4','.mp4v','.mpe','.mpeg','.mpeg4','.mpg','.mpg2','.mpv','.mpv2','.mqv','.mvp','.ogm','.ogv','.qt','.qtm','.rm','.rts','.scm','.scn','.smk','.swf','.vob','.wmv','.xvid','.x264','.mp3','.flac','.ogg','.wav', '.flv', '.mkv']
-MEDIA_RDIR = 'media/'
-PAGE_FOLDER = 'omxfront/'
+MEDIA_RDIR = '/home/pi/rpi-rgb-led-matrix/utils'
+PAGE_FOLDER = '/home/pi/omxplayer-frontend/omxfront/'
 PAGE_NAME = 'interface.htm'
 OMXIN_FILE='omxin'
 
@@ -51,7 +51,7 @@ class Other:
     def GET(self,name):
         if not name == '':
             if name in command_send:
-                omx_send(command_send[name])
+                #omx_send(command_send[name])
                 return '[{\"message\":\"OK\"}]'
             else:
                 if os.path.exists(os.path.join(PAGE_FOLDER,name)):
@@ -131,11 +131,16 @@ def omx_send(data):
 
 def omx_play(file):
     #omx_send('q')
+    print("TRY")
     #time.sleep(0.5) #Possibly unneeded - crashing fixed by other means.
-    subprocess.Popen('killall omxplayer.bin',stdout=subprocess.PIPE,shell=True)
-    subprocess.Popen('clear',stdout=subprocess.PIPE,shell=True)
-    subprocess.Popen('omxplayer -o hdmi '+os.path.join(MEDIA_RDIR,re.escape(file))+' <'+re.escape(OMXIN_FILE),shell=True)
-    omx_send('z')
+    try:
+        subprocess.Popen('killall video-viewer -s KILL',stdout=subprocess.PIPE,shell=True)
+        subprocess.Popen('clear',stdout=subprocess.PIPE,shell=True)
+        subprocess.Popen('/home/pi/rpi-rgb-led-matrix/utils/video-viewer -F -f --led-rows=32 --led-cols=64 --led-slowdown-gpio=5 --led-pwm-dither-bits=0 --led-pwm-bits 8 ' + os.path.join(MEDIA_RDIR, re.escape(file)), shell=True)
+    except Exception as e:
+        print(e)
+    # sudo ./video-viewer -F -f --led-rows=32 --led-cols=64 --led-slowdown-gpio=5 --led-pwm-dither-bits=0 --led-pwm-bits 8 glow.mp4
+    #omx_send('z')
     return 1
 
 

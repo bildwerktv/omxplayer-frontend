@@ -1,5 +1,11 @@
 /* Start: Recommended Isotope styles */
 
+.controlitem {
+    visibility: hidden;
+    height = 0´px;
+    width = 0 px;
+    }
+
 /**** Isotope Filtering ****/
 
 .isotope-item {
@@ -205,13 +211,13 @@ body {
   color: #FFF;
 }
 
-.element .controlsymbol {
+/*.element .controlsymbol {
   left: 0.4em;
   top: 0.4em;
   font-size: 4.5em;
   line-height: 1.0em;
   color: #FFF;
-}
+}*/
 
 .element.large .symbol {
   font-size: 4.5em;

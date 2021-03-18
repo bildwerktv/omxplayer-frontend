@@ -5,7 +5,7 @@
 	<script type="text/javascript" src="jquery-1.8.1.min.js"></script>
 	<script type="text/javascript" src="jquery.isotope.min.js"></script>
 	<link rel="stylesheet" href="isotopestyle.css" />
-	<title>Raspberry Pi HTML Interface</title>
+	<title>LED Control HTML Interface</title>
 	<script type="text/javascript">	
 		var navigationBase = '/path/';
 		var playBase = '/play/';
@@ -16,7 +16,7 @@
 		
 		function bindNavigators() {
 			$('a.navigator').click(function(event) {
-					$(this).css('opacity', 0.1);
+					//$(this).css('opacity', 0.1);
 					navigate($(this).data('relative'));
 					return false;
 			});
@@ -24,7 +24,7 @@
 		
 		function bindPlayers() {
 			$('a.player').click(function() {
-				$(this).css('opacity', 0.1);
+				//$(this).css('opacity', 0.1);
 				$.ajax({
 					url: playBase + $(this).data('relative'),
 					type: "get",
@@ -176,101 +176,101 @@
 </head>
 <body>
 	<div id="container" style="height:100%">
-		<p id="output" style="height: 2em"></p>
-		<div id="controls" style="height:auto">
+		<p id="output" style=""></p>
+		<div id="controls" style="">
 			<a class="control" id="pause" href="/pause">
-				<div class="controlitem element transition metal width2">
+				<div class="controlitem  transition metal width2">
 						<p class="number">f</p>
 						<h3 class="controlsymbol">‖</h3>
 					<!--<h2 class="name">Pause</h2>-->
 				</div>
 			</a>
 			<a class="control" id="stop" href="/stop">
-				<div class="controlitem element transition metal width2">					
+				<div class="controlitem  transition metal width2">
 						<p class="number">esc</p>
 						<h3 class="controlsymbol">◼</h3>
 					<!--<h2 class="name">Stop</h2>-->
 				</div>
 			</a>
 			<a class="control" id="seekbl" href="/seek-600">
-				<div class="controlitem element transition metal width2">
+				<div class="controlitem  transition metal width2">
 						<p class="number">s</p>
 						<h3 class="controlsymbol"><<</h3>
 					<!--<h2 class="name">Seek <- lots</h2>-->
 				</div>
 			</a>
 			<a class="control" id="seekb" href="/seek-30">
-				<div class="controlitem element transition metal width2">
+				<div class="controlitem  transition metal width2">
 						<p class="number">a</p>
 						<h3 class="controlsymbol"><</h3>
 					<!--<h2 class="name">Seek <-</h2>-->
 				</div>
 			</a>
 			<a class="control" id="seekf" href="/seek+30">
-				<div class="controlitem element transition metal width2">
+				<div class="controlitem  transition metal width2">
 						<p class="number">d</p>
 						<h3 class="controlsymbol">></h3>
 					<!--<h2 class="name">Seek -></h2>-->
 				</div>
 			</a>
 			<a class="control" id="seekfl" href="/seek+600">
-				<div class="controlitem element transition metal width2">
+				<div class="controlitem  transition metal width2">
 						<p class="number">w</p>
 						<h3 class="controlsymbol">>></h3>
 					<!--<h2 class="name">Seek -> Lots</h2>-->
 				</div>
 			</a>
 			<a class="control" id="volumeup" href="/volumeup">
-				<div class="controlitem element transition metal width2">
+				<div class="controlitem  transition metal width2">
 						<p class="number">num +</p>
 						<h3 class="controlsymbol">♫+</h3>
 					<!--<h2 class="name">Volume +</h2>-->
 				</div>
 			</a>
 			<a class="control" id="volumedown" href="/volumedown">
-				<div class="controlitem element transition metal width2">
+				<div class="controlitem  transition metal width2">
 						<p class="number">num -</p>
 						<h3 class="controlsymbol">♫-</h3>
 					<!--<h2 class="name">Volume -</h2>-->
 				</div>
 			</a>
 			<a class="control" id="languageup" href="/languageup">
-				<div class="controlitem element transition metal width2">
+				<div class="controlitem  transition metal width2">
 						<p class="number">k</p>
 						<h3 class="controlsymbol">L+</h3>
 					<!--<h2 class="name">Language +</h2>-->
 				</div>
 			</a>
 			<a class="control" id="languagedown" href="/languagedown">
-				<div class="controlitem element transition metal width2">
+				<div class="controlitem  transition metal width2">
 						<p class="number">j</p>
 						<h3 class="controlsymbol">L-</h3>
 					<!--<h2 class="name">Language -</h2>-->
 				</div>
 			</a>
 			<a class="control" id="togglesubs" href="/togglesubs">
-				<div class="controlitem element transition metal width2">
+				<div class="controlitem  transition metal width2">
 						<p class="number">t</p>
 						<h3 class="controlsymbol">CC</h3>
 					<!--<h2 class="name">Toggle Sub</h2>-->
 				</div>
 			</a>
 			<a class="control" id="subtitledown" href="/subtitledown">
-				<div class="controlitem element transition metal width2">
+				<div class="controlitem  transition metal width2">
 						<p class="number">n</p>
 						<h3 class="controlsymbol">C-</h3>
 					<!--<h2 class="name">Subtitle -</h2>-->
 				</div>
 			</a>
 			<a class="control" id="subtitleup" href="/subtitleup">
-				<div class="controlitem element transition metal width2">
+				<div class="controlitem  transition metal width2">
 						<p class="number">m</p>
 						<h3 class="controlsymbol">C+</h3>
 					<!--<h2 class="name">Subtitle +</h2>-->
 				</div>
 			</a>
 			<a id="navigationback" href="/">
-				<div class="controlitem element lanthanoid metal width2"> <!-- lanthanoid -->
+				<div class="controlitem  lanthanoid metal width2"> <!-- lanthanoid -->
 						<p class="number">r</p>
 						<h3 class="controlsymbol">↰</h3>
 				</div>
@@ -281,7 +281,7 @@
 		</div>
 	</div>
 	<div id="footer">
-		<p style="float: left">brought to you by <a href="https://bitbucket.org/krageon/omxplayer-frontend">omxplayer frontend</a></p>
+
 		<p style="float: right"><a href="/shutdown">shutdown system</a></p>
 	</div>
 </body>
